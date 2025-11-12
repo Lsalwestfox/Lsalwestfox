@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <title>Important</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        }
+
+        video {
+            display: block;
+            height: 100%;
+            width: auto;
+        }
+
+        video[hidden] {
+            display: none;
+        }
+
+        #confirm[hidden] {
+            display: none;
+        }
+
+        #confirm {
+            margin-left: calc(50% - 100px);
+            width: 200px;
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+        }
+
+        #confirm:hover {
+            border-color: brown;
+            color: brown;
+        }
+
+        #confirm:active {
+            border-color: yellow;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <video disablePictureInPicture id="vid" hidden>
+        <source src="../media/very_important.mp4" type="video/mp4">
+        There's nothing here
+    </video>
+    <button id="confirm">Move to the external site</button>
+</body>
+<script>
+    document.getElementById('confirm').addEventListener('click', () => {
+        document.getElementById('confirm').setAttribute('hidden', '');
+        var video = document.getElementById('vid');
+        video.removeAttribute('hidden');
+        video.muted = false;
+        video.play();
+    });
+</script>

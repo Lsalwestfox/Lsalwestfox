@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<head>
+    <title>EvIl Blog?!?!?</title>
+    <link rel="shortcut icon" href="../media/ext/evilblogicn.gif" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-image: url('../media/ext/evilblogback.gif');
+            text-align: center;
+            color: red;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        h1, h5, h6, p, img {
+            display: inline;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title > img {
+            width: 64px;
+            padding-right: 6px;
+        }
+
+        .hyperlink {
+            color: #ff6633;
+        }
+
+        .hyperlink:hover {
+            color: #ffaa77;
+        }
+
+        .tags {
+            color: #ffaa77;
+        }
+
+        .posts {
+            width: calc(100% - 15px);
+            display: block;
+            columns: 371px;
+        }
+
+        .posts > div {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .post {
+            color: #ff6633;
+            border: 1px solid #ff6633;
+            background-color: black;
+            text-align: left;
+            display: inline-block;
+            padding: 6px;
+        }
+
+        .post-image {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .post-image:hover {
+            cursor: pointer;
+            transform: scale(1.03);
+        }
+
+        .centerbox {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        #guide {
+            padding: 6px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        #premise {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        #img-preview {
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #img-preview > img {
+            max-height: 90% !important;
+            max-width: 90% !important;
+        }
+
+        #firebackground {
+            width: 100vw;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-image: url('../media/ext/evilblogfirebg.png');
+        }
+
+        #fire {
+            width: 100vw;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-repeat: repeat-x;
+            background-image: url('../media/ext/evilblogfire.gif');
+        }
+
+        #vfx {
+            position: absolute;
+            z-index: -999999;
+            height: 100vh;
+            width: 100vw;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <canvas id="vfx"></canvas>
+    <div id="manifest"></div>
+    <div id="firebackground"></div>
+    <div id="fire"></div>
+    <div id="img-preview" class="hidden">
+    </div>
+    <div class="title">
+        <img src="../media/ext/evilblogicn.gif">
+        <h1>Evil blog >:D</h1>
+        <img src="../media/ext/evilblogicn.gif">
+    </div>
+    <h5 id="guide">Use ctrl+F to search, by id type id:{wanted-id}, to searh by tag, type symbol "#" than tag name.</h5>
+    <br>
+    <p id="premise">
+        It's not evil but more chaotic bullshit shitstorm, sometimes based, sometimes cringe, idk don't care :3<br>
+    </p>
+    <br>
+    <div class="centerbox">
+        <div class="posts" id="posts2">
+        </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+<script> // scroll behaviour
+    window.onscroll = () => {
+        document.getElementById('firebackground').style.bottom = `${-window.pageYOffset}px`;
+        document.getElementById('fire').style.bottom = `${-window.pageYOffset}px`;
+        document.getElementById('img-preview').style.top = `${window.pageYOffset}px`;
+        document.getElementById('vfx').style.top = `${window.pageYOffset}px`;
+    };
+</script>
+<script> // image preview
+    const prev = document.getElementById('img-preview');
+    prev.addEventListener('click', () => prev.classList.add('hidden'));
+    
+    function openPreview(url) {
+        prev.classList.remove('hidden');
+        prev.innerHTML = `<img src="${url}" loading="lazy">`;
+    }
+</script>
+<script> // fire effect
+    const canvas = document.getElementById('vfx');
+    const ctx = canvas.getContext("2d");
+    
+    const random = (min, max) => Math.random() * (max - min) + min;
+    const particles = 200;
+    const objects = [];
+
+    for(let i = 0; i < particles; i++) {
+        let x = {}
+        resetParticle(x);
+        objects.push(x);
+    }
+
+    function resetParticle(o) {
+        o.x = random(-100, canvas.clientWidth + 100);
+        o.y = canvas.height + 100;
+        o.size = random(5, 10);
+        o.speed = random(1, 5);
+    }
+
+    setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        for(let i = 0; i < particles; i++) {
+            let part = objects[i];
+            let p = Math.max(0, canvas.height - part.y) / 500;
+            ctx.fillStyle = `hsla(34.12, 100%, ${50 - p * 50}%, ${1 - p})`;
+            ctx.fillRect(part.x, part.y, part.size, part.size);
+            part.y -= part.speed;
+            if(part.y < canvas.height - 500) {
+                resetParticle(part);
+            }
+            objects[i] = part;
+        }
+    }, 10);
+</script>
+<script>
+    function blogtext(str) {
+        return `<p>${str}</p>`;
+    }
+
+    function blogimage(src) {
+        return `<img src="../media/${src}" loading="lazy" class="post-image" onclick="openPreview('../media/${src}')">`;
+    }
+
+    function blogimagectr(src) {
+        return `<img src="../media/warning_controversial_images/${src}" loading="lazy" class="post-image" onclick="openPreview('../media/warning_controversial_images/${src}')">`;
+    }
+
+    const postsdb = [
+        ['12/11/2025', '09:14PM', blogtext("Listen, you knew what this blog is, you knew it gonna be controversial") + blogimagectr("./realpfp2.png"), ['art', 'oc']],
+        ['12/11/2025', '09:13PM', blogtext("I realised i swapped mouth and day unlike normal, sane blog counterpart. This place is truly evil"), ['meme', 'notmeme']],
+        ['03/11/2025', '10:06PM', blogtext("If in skyrim you are on a 70 degree slope strafing and spam space bar you became dream himself for a short time"), ['meme']],
+        ['03/11/2025', '10:04PM', blogtext("the"), []],
+        ['02/11/2025', '07:38PM', blogtext("this chat is a shit, +33 from nation of the chair and their obamaprism citizens"), ['chair', 'obama']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['02/11/2025', '07:22PM', blogtext("If penguin is responsible for handling U-1042, when who is jackbobmama4818"), ['shitpost', 'notmeme', 'r/random', 'rand', 'rng']],
+        ['02/11/2025', '07:19PM', blogtext("Soy reddit: screams<br>Chad evil blog: proffesional, calm, collected shitposting") + blogimagectr('./pepefrg-65-3204812481.gif'), ['image']],
+        ['02/11/2025', '07:05PM', blogtext("chair says table is wrong about moskito people"), ['table', 'chair', 'chairpropaganda', 'moskito', 'people', 'moskitopeople']],
+        ['02/11/2025', '07:05PM', blogtext("r/politics is a political reverse asylum, you enter to have schizophrenia, not to get rid of it"), ['notmeme', 'meme', 'r/politics', 'politics']],
+        ['02/11/2025', '07:05PM', blogtext("found this picture when surfing web. based") + blogimagectr('quote.png'), ['politics', 'image', 'actuallynotashitpost']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+    ];
+
+    let x = {};
+    let buffer = '';
+    for(let i = 0; i < postsdb.length; i++) {
+        let post = postsdb[i];
+        buffer += `
+            <div class="post">
+                <h6>post (id:${postsdb.length - 1 - i}) ${post[0]} at ${post[1]}</h6><br>
+                ${post[2]}<br>
+                <h6 class="tags">#post${post[3].length == 0 ? '' : ' #'}${post[3].join(' #')}</h6>
+            </div>
+        `;
+        for(let xx of post[3]) {
+            x[xx] = true;
+        }
+    }
+
+    let oooo = '';
+    for(l in x) {
+        oooo += ', ' + l;
+    }
+    document.getElementById('posts2').innerHTML = `
+        <div class="post">
+            <h6>post (id:${postsdb.length}) 01/01/1900 at 00:00AM</h6><br>
+            <a href="../index.html" class="hyperlink">Back to main page</a><br>
+            <p>Forgot to say there's a lot of satire and ifunny.co humor. Chair is the answer to question of the moskito-humans</p>
+            <h4>Posts: ${postsdb.length + 1}</h4>
+            <h4>Avaliable tags:</h4>
+            <h5>post, avaliable-tags${oooo}</h5><br>
+            <h6 class="tags">#avaliable-tags</h6>
+        </div>
+    ` + buffer;
+</script>

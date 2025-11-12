@@ -1,0 +1,166 @@
+<h1>Just use hypermedia</h1>
+<br>
+<div class="box">
+    <h1 class="article-radical">H</h1>ypermedia, it's basically means html but i use hypermedia sometimes because i liked term.
+    Most of the time on the web being used js framework, a.k.a. react a.k.a. server runs typescript and then gets request from the user
+    then it goes through polymorphic hellscape which is clean code, generating json generator for html code that is going to the site
+    other polymorphic clean code abomination, reads json and creates html. Why not just send html to the user?<br><br>Well according to
+    avarage redditor says it's for API, or that it's compbility. But it's not, first of all you can just write 2 entry points it's
+    not that hard, they use the same data. And second, this is thing is pure a.k.a. from the same json the same html is generated, always,
+    no matter where you send it, so you can easily just send html and set html contents of the element.<br><br>
+    
+    <h1 class="article-radical">A</h1>nd i'm gonna "react" to the htmx article about why <a href="https://htmx.org/essays/htmx-sucks/">"htmx sucks"</a>
+    from creator of htmx, which is good library that better than js frameworks, i probably don't agree on most if not all points of article
+    <br><br>
+    <blockquote>
+        real work being done in web development, things like React Server Components,
+        Svelte Runes and Signals that are actually pushing the state of the art forward.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    Name 1 js framework that not literaly the same as everyone other that not htmx or his
+    son apline js. Also say differences between server components, hooks or just regular
+    components, yes there's none. I remember app being you host things on endpoints and you
+    call them with arguments and server does stuff returns other stuff. Why you need
+    overcomplicate stuff? Yes it's art, but while in art and aestetics maximalism is good
+    but in code world, code must be minimalistic and simplier, becoming good, it's actually
+    hard to make things simple
+    <br><br>
+    <blockquote>
+        First of all, consider the code for htmx. <a href="https://github.com/bigskysoftware/htmx/blob/master/src/htmx.js">Look at this garbage.</a>
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    Look at codebase of avarage company, it's literaly the same shit. Also htmx works so you can just ignore that unless it's really hurts
+    <br><br>
+    <blockquote>
+        Worst of all, it's just one big ball of JavaScript! One file! It isn't decomposed at all.
+        If this person took one of my <a href="https://www.cs.montana.edu/directory/2256398/carson-gross">classes at MSU</a>
+        I would fail them based solely on this complete misunderstanding of <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separation of Concerns</a>,
+        something any freshman in computer science should be able to grasp.</a>
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    htmx is a client-side library it's must be a one javascript file for ease of use. Also
+    by you're own logic you need take you're own classes because you don't know about
+    separation of concerns? why i say this? the guy who sad it also wrote htmx. Also
+    can be multiple modules in one file so separation of concerns in one file if you need
+    modules in a funcking client side library
+    <br><br>
+    <blockquote>
+        The next red flag is the lack of a build step.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    no build step is good actually, also javascript don't have build step
+    <br><br>
+    <blockquote>
+        If you look closely, even though they claim to not have a build step, they
+        <a href="https://github.com/bigskysoftware/htmx/blob/bedee219329117fff8d58e33678d82f7c34b08b5/package.json#L30">actually do</a>
+        have a build step, it's just an ad hoc set of bash scripts they wrote themselves.
+        Ridiculous and dishonest. Shameful.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    using language to automate repetitive tasks that designed to automate repetitive
+    tasks is a crime now? are you kidding? I used bash commands in my site build step
+    too and it's even worse. I literaly create directory then remove directory but not
+    it's children and touch file that have name of removed directory just to create file
+    with it's subfolders, this is literaly will be considered geneva convetion violation
+    by you're logic.
+    <br><br>
+    <blockquote>
+        Despite the <a href="https://blog.logrocket.com/understanding-typescripts-benefits-pitfalls/">obvious benefits</a>
+        of <a href="https://www.typescriptlang.org/">TypeScript</a> for a project like htmx, the authors have stubbornly resisted using it.
+        Part of this is their irrational opposition to a build step (which they actually have, btw!) but part of it is a ridiculous commitment to
+        "shipping debuggable source code"
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    It's just javascript's JDoc with a build step that adds layer of abstaction for no reason
+    The only reason to use typescript is to convert it to lua a.k.a. writing things like nvim
+    configurations with typescript.
+    <br><br>
+    <blockquote>
+        OK, well, if you haven't noticed, HTML is over thirty years old now. It's ancient.
+        And, moreover, we have lots of experience with the approach these guys are recommending.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    No the most experience is handling .json files and building html on client because
+    server can't simply return html. Oh wait server can return .html php alrealy do
+    that
+    <br><br>
+    Now, the next chapter is <a href="https://htmx.org/essays/htmx-sucks/#no-components">No Components</a>.<br>
+    Htmx has components and you can do SPA easily with it, just host hmtl<br><br>
+    <a href="https://htmx.org/essays/htmx-sucks/#no-front-end-back-end-split">No Front-End/Back-End Split</a>.<br>
+    Look at href attribute it shock you. If you don't know what i'm talking about you should have been read this chapter.
+    <br><br>
+    <blockquote>
+        Leaving aside if the Front-End/Back-End split is good or not, we can definitively say that Back-End engineers make garbage user interfaces.
+        Just look at the htmx website. You've got inline styles, tables, a bunch of image tags didn't have alt descriptions forever. Just a dogs breakfast of bad HTML,
+        from people who are trying to tell us to use HTML! You should leave your user interfaces in the hands of people who understand how to properly build them,
+        and those people are, today, mostly Front-End SPA developers.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    Front-End developers are just people that draw solid color squares in figma, i'm kidding they just copy-pasting the same patterns of boxes into figma, the
+    avarage website is so avarage, minimalistic, soulless, ugly and monochronic you can just replace all front-end developers with AI. I'm often against AI in art
+    but modern interface is not art, it's just ugly minimalism that thinks it's better than previous styles like aero or 95, but it doesn't.
+    <br><br>
+    And if you don't care about aestetics aestetics and care only about functional aestetics, UI's build by front-end developers still bad, they have 90% of empty space
+    which means you need scroll more, because there's only 2 colors (black and white) and don't have depth everything just blends, is that text a button? idk is this a link? idk,
+    and from financial standpoint you may think well it's cheaper to do flat design than aero, i mean no one will remember, and just forgets you because you don't have
+    any brand recognision but whatever.
+    <br><br>
+    And perfomance? bro it's not that expensive, css have 16 million colors available to choose, transitions and even 3d matrix
+    transformations and filters that no one uses, and there's also canvas and js, you see a background of my main page, i replicated from terraria mod, it's just 69 lines
+    of crappy js code, including formatting like empty lines and other, and including code to rotate title of the main page. Other effects may be 1k lines of code but don't
+    say you care about bandwitch when you have 20MB of traffic for a recipe website. And older sites even at 90's were better and with modern tech can be written theoretically
+    even without js, just css. You can make from raw html into servisable article text with 8 lines of css, here's they:
+    <br><br>
+    <blockquote>
+        <pre>body {
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #444;
+    padding: 0 10px;
+}</pre>
+        <footer>- source: <a href="http://bettermotherfuckingwebsite.com/">http://bettermotherfuckingwebsite.com/</a></footer>
+    </blockquote>
+    <br>
+    So maybe front-end dev makes ui the same as back-end dev, if not worse.
+    <br><br>
+    <blockquote>
+        Sometimes the htmx author will make a smart-alec comment like “Well, how do you feel about the
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a#href">href</a>
+        attribute?”, but that's different, obviously.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    It's from <a href="https://htmx.org/essays/htmx-sucks/#xss-vulnerabilities">XSS vulnerabilities chapter</a>, trying to say how htmx is unsafe because
+    of XSS vulnerabilities, but it's just back-end dev that forgot to sanitase user input, it's just skill issue.
+    <br><br>
+    <blockquote>
+        Getting back to the more technical side of things, if you adopt htmx and you want to also have a mobile app
+        or an API for 3rd parties to use, you will need to create that API entirely separately from your web application's end points.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    Okay, because you probably use js framework you use `val: ${val}` semantics for json, guess what html is the same just different syntax, same data,
+    same process, say everything just return value different, so don't shit saying it's hard. Also if you make mobile app with electron, i show you a surprise:
+    document.querySelectorAll, and don't say you care about perfomance your recipe website takes 7 seconds to load because of ads.
+    <br><br>
+    <blockquote>
+        Another technical issue with htmx is that it just won't scale. It may work for small applications,
+        but as applications get larger the htmx model breaks down and becomes a mess. The component model of React
+        and other front-end tools keeps everything compartmentalized and testable.
+        This makes it much easier to keep large codebases clean.
+        <footer>- htmx's article</footer>
+    </blockquote>
+    <br>
+    Htmx model literaly can be used or used the same as react component model. And also can make single page
+    application without 5 build 1 minute steps that broke after each update without being tied to javascript
+</div>

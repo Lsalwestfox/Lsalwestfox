@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<head>
+    <title>Blog?</title>
+    <link rel="shortcut icon" href="../media/ext/blogicn.gif" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    
+        body {
+            background-color: black;
+            text-align: center;
+            padding-left: 15px;
+            color: white;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        h1, h5, h6, p, img {
+            display: inline;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .post {
+            border: 1px solid #1a0289;
+            background-color: black;
+            text-align: left;
+            display: inline-block;
+            padding: 6px;
+        }
+
+        .post-image {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .post-image:hover {
+            cursor: pointer;
+            transform: scale(1.03);
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+        
+        .title > img {
+            width: 64px;
+            padding-right: 6px;
+        }
+
+        .tags {
+            color: cyan;
+        }
+
+        .posts {
+            width: calc(100% - 15px);
+            display: block;
+            columns: 371px;
+        }
+
+        .posts > div {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .hyperlink {
+            color: blue;
+        }
+        
+        .hyperlink:hover {
+            color: red;
+        }
+
+        #img-preview {
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #img-preview > img {
+            max-height: 90% !important;
+            max-width: 90% !important;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div id="img-preview" class="hidden"></div>
+    <div class="title">
+        <img src="../media/ext/blogicn.gif">
+        <div>
+            <h1>My "blog", but probably random things</h1><br>
+            <h6>use ctrl+F to search, by id type id:{wanted-id}, to searh by tag, type symbol "#" than tag name.</h6>
+        </div>
+    </div>
+    <br>
+    <div class="posts" id="posts2">
+        <div class="post">
+            <h6>post (id:0) 01/01/1900 at 00:00AM</h6><br>
+            <a href="../index.html" class="hyperlink">Back to main page</a>
+            <h4>Avaliable tags:</h4>
+            <h5>a, b, c</h5><br>
+            <h6 class="tags">#avaliable-tags</h6>
+        </div>
+    </div>
+</body>
+<script src="../media/ext/blogvfx.js"></script>
+<script>
+    const prev = document.getElementById('img-preview');
+    prev.addEventListener('click', () => prev.classList.add('hidden'));
+    window.onscroll = () => prev.style.top = `${window.pageYOffset}px`;
+
+    function openPreview(url) {
+        prev.classList.remove('hidden');
+        prev.innerHTML = `<img src="${url}" loading="lazy">`;
+    }
+
+    function blogtext(str) {
+        return `<p>${str}</p>`;
+    }
+
+    function blogimage(src) {
+        return `<img src="../media/${src}" loading="lazy" class="post-image" onclick="openPreview('../media/${src}')">`;
+    }
+
+    const postsdb = [
+        ['11/12/2025', '09:16PM', blogtext("I used git gui, it's actually good and better than github desktop in my opinion"), []],
+        ['11/12/2025', '09:12PM', blogtext("it shows i haven't draw for ages, i forget to shade part of clothes") + blogimage("art/pfp.png"), ['art', 'oc']],
+        ['11/02/2025', '06:40PM', blogtext("rewrote entire site again, i was stupid"), []],
+        ['10/04/2025', '04:46PM', blogtext("I tried to rewrite old minipages and some opinions but there's so much stuff that i probably don't do that"), []],
+        ['09/22/2025', '09:27PM', blogimage("art/pfp1.png"), ['art', 'oc']],
+        ['08/31/2025', '10:17PM', blogtext("Guys are kinda hot..."), []],
+        ['08/26/2025', '09:09PM', blogtext("Got a drawing tablet"), []],
+        ['08/17/2025', '05:33PM', blogtext("Lost motivation doing anything. Yet again. Days straight"), []],
+        ['08/01/2025', '09:51PM', blogtext("New mouth new art! I probably be better using hard edges only") + blogimage("art/a.png"), ['art', 'oc']],
+        ['07/26/2025', '08:42PM', blogtext("This site going through a complete rewrite due to convoluted database, will be less relient on javascript and optimisied, and controversial page will be splitted into minipages like other articles, having also better structure, build tools will be proprietary"), []],
+        ['07/22/2025', '09:28PM', blogtext("Probably gonna hard to believe but i'm actually not christian, i just undestand why everything in christ is that way or another. And also sounds cooler :3"), []],
+        ['07/22/2025', '07:47PM', blogtext("Gaming have peaked at half-life 2 and it goes downhill since idk 2010? graphics included (not all games, most)"), []],
+        ['07/20/2025', '08:08PM', blogtext("This art was made in new location, with shitty internet") + blogimage("art/pose.png"), ['art', 'oc']],
+        ['07/16/2025', '08:28PM', blogtext("I was not scared i just liked meme") + blogimage("art/sitsinfear.png"), ['art', 'oc']],
+        ['07/16/2025', '06:33PM', blogtext("Seriously, when i open corporate website i'm immideantly feel horrible and bad"), []],
+        ['07/16/2025', '06:27PM', blogtext("Good news though is that recruiters don't look here, thank god because i don't want corporate people here, they make me actually depressed holy shit i never seen such souless creatures before it's horrifying"), []],
+        ['07/16/2025', '06:21PM', blogtext("Turns out my social skills are even worse than i thought because i can't even type clearly, i added more obvious disclaimer"), []],
+        ['07/11/1025', '12:48PM', blogimage("art/atthecliff_redraw_without_cliff.png"), ['art']],
+        ['07/11/2025', '09:22AM', blogtext("Cube<sup>TM</sup>") + blogimage("art/cube.png"), ['art']],
+        ['07/08/2025', '11:10AM', blogtext("Yes i drew NOT tails character") + blogimage("art/lsalwestfox.png"), ['art', 'oc']],
+        ['07/08/2025', '05:14PM', blogtext("Turns out hand was not correctly done. I thought hand in reference image was not correct, but it is"), []],
+        ['07/07/2025', '09:59PM', blogtext("I had internet cut off and get bored so here's random art") + blogimage("art/ermactually.png"), ["art"]],
+        ['06/30/2025', '08:15PM', blogtext("Third attempt was better because i done skeleton less fucked up overall") + blogimage("art/thatmemeredraw.png"), ["art"]],
+        ['06/30/2025', '01:35PM', blogtext("Second attempt is better") + blogimage("art/chao.png"), ["art"]],
+        ['06/30/2025', '01:04PM', blogtext("For shadow use multiply layer with color that is complementary to main one (shadows not always black), and use overlay with #FFF as light"), []],
+        ['06/30/2025', '02:36PM', blogimage("memes/a6.png"), ["meme"]],
+        ['06/30/2025', '02:19PM', blogtext("Memes time!") + blogimage("memes/a5.png"), ["meme"]],
+        ['06/30/2025', '02:03PM', blogtext("first attempt at making character using skeleton from scrath, i'm gonna redraw previous images using legit skeleton") + blogimage("art/thatmeme.png"), ['art']],
+        ['06/30/2025', '11:46AM', blogtext("turns out first need draw stick figure, than other stuff, stick hand in perspective gonna be hell seems"), []],
+        ['06/30/2025', '11:43AM', blogtext("its actually hard draw creatures with 2-point perspective, or i just stupid"), []],
+        ['06/30/2025', '11:39AM', blogtext("first art using 1-point perspective") + blogimage("art/boxes_in_the_desert.png"), []],
+        ['06/29/2025', '08:49PM', blogtext("this actually insane") + blogimage("s1.png"), []],
+        ['06/29/2025', '07:37PM', blogtext("gimp forever stuck at height so long that it no longer usable, so i switch to krita, image updating while transforming late behind but i can accept that") + blogimage("memes/a4.png"), ['meme']],
+        ['06/28/2025', '01:45PM', blogtext("Currently learning how to draw perspective so i can not use memes poses references as outline") + blogimage("art/boxes.png"), ['art']],
+        ['06/28/2025', '01:44PM', blogtext("I found this meme and was inspired so i traced for study. I learned that my perspective knowledge is shit. For redraw see post with id 25") + "<br>[[404_IMAGE_NOT_FOUND]]", []],
+        ['06/28/2025', '01:42PM', blogtext("I found this meme and was inspired so i traced for study. For redraw see post with id 20") + "<br>[[404_IMAGE_NOT_FOUND]]", []],
+        ['06/24/2025', '11:17AM', blogtext("If copyright infigement was real, AI art companies will be sued fine so big, that even entire goverments can't afford that"), []],
+        ['06/24/2025', '11:12AM', blogtext("People that wrote apocalypse chapter in bible thousands ago predicted 2025, like falling morals, wars, heck even global warning, that nuts"), []],
+        ['06/18/2025', '08:44AM', blogtext("Double standards are real, big tech is digusting") + blogimage("memes/a3.png"), ['meme']],
+        ['06/17/2025', '10:28AM', blogimage("memes/a2.png"), ['meme']],
+        ['06/17/2025', '10:16AM', blogtext("Need complex layout? just use css's colums property"), []],
+        ['06/17/2025', '09:01AM', blogimage("memes/a1.png"), ['meme']],
+        ['06/16/2025', '09:50PM', blogtext("First post that was posted on this website!"), []]
+    ];
+
+    let x = {};
+    let buffer = '';
+    for(let i = 0; i < postsdb.length; i++) {
+        let post = postsdb[i];
+        buffer += `
+            <div class="post">
+                <h6>post (id:${postsdb.length - 1 - i}) ${post[0]} at ${post[1]}</h6><br>
+                ${post[2]}<br>
+                <h6 class="tags">#post${post[3].length == 0 ? '' : ' #'}${post[3].join(' #')}</h6>
+            </div>
+        `;
+        for(let xx of post[3]) {
+            x[xx] = true;
+        }
+    }
+
+    let oooo = '';
+    for(l in x) {
+        oooo += ', ' + l;
+    }
+    document.getElementById('posts2').innerHTML = `
+        <div class="post">
+            <h6>post (id:${postsdb.length}) 01/01/1900 at 00:00AM</h6><br>
+            <a href="../index.html" class="hyperlink">Back to main page</a>
+            <h4>Posts: ${postsdb.length + 1}</h4>
+            <h4>Avaliable tags:</h4>
+            <h5>post, avaliable-tags${oooo}</h5><br>
+            <h6 class="tags">#avaliable-tags</h6>
+        </div>
+    ` + buffer;
+
+    const config = wireframeGridlines(
+        document.body[0], // parent element 
+        'effect-maker-version-000', // effect version (for dev to keep later versions of the effect backwards compatible) 
+        '', // id for this instance of this effect 
+        'absolute', // CSS position type for this effect
+        100, // width of the effect within its parent 
+        100, // height of the effect within its parent 
+        '%', // units of measurement for the above 2 
+        'hidden', // CSS overflow type for this effect
+        '#c3a62e', // wire color 
+        0, // line thickness in px
+        4, // number of vertical lines on the back wall
+        4, // number of horizontal lines on the back wall
+        1, // amount of concentric lines; behaves differently depending on whether forced perspective is on
+        21.2, // CSS left property of the back wall
+        20.254945054945054, // CSS top property of the back wall
+        '%', // units of measurement for the above 2
+        200, // width of the back wall 24.632037103191816
+        200, // height of the back wall
+        'px', // units of measurement for the above 2
+        true, // whether to display grid lines on the back wall
+        true, // whether to display the grid lines radiating from the back wall
+        true, // whether to display the grid lines that are parallel to the back wall
+        '#1a0289', // the glow color for the lines
+        2, // the blur amount for the lines' glow
+        1, // the spread amount for the lines' glow
+        true, // z-flow - whether concentric lines experience a flowing animation, to or away from the back wall
+        -0.39086414510510226 * 6, // the z-flow animation speed 
+        48, // the framerate for the z-flow animation (in frames per second)
+        false, // whether forced perspective is on; forces the corners of the back wall to connect to the corners of the whole effect
+        false, // whether there's a natural vanishing point behind the back wall, for when forced perspective is off
+        27.866643976748147, // vanishing point's position from the left
+        40.784723513424474 / 1.5, // vanishing point's position from the top
+        '%', // units of measurement for the above 2
+        'none', // CSS pointer-events property 
+        -1 // Z-index 
+    );
+</script>

@@ -1,0 +1,33 @@
+<h1>Redesigning website</h1>
+<br>
+<div class="box">
+    <h1 class="article-radical">Y</h1>es i refactor it again, i wasn't satisfied with current system on which website was stood,
+    so i rewrited it, removing some of the stuff that was too small for having a page and just be article or blog post or like assets
+    folder page with free meme templates i never use it, and i don't want maintain it. And some articles (were called minipages) were
+    not moved because they were depricated, or because like dislaimer was overkill and i just put it on the articles where politics
+    involved so people actually saw that.
+    <br><br>
+    So what i changed besides removing stuff, well i simplified code base, old code base were made using
+    <a href="https://github.com/Lsalwestfox/MultiPurposeBuildSystem">Multi purpose build system</a>, a discontinue, crappy system that i wrote mainly
+    to replace cmake because i were refused to learn it, and then i know cmake, MPBS is just utter garbage. Some stuff was broken so i
+    were to execute some obscure linux commands to do stuff. Now there's no build system, what you see on the site repo is all codebase.
+    <br><br>
+    Old codebase had mpbs script that generates html content for things like blog on compile-time instead of js scripts at the runtime, which
+    is my bad, js ran this code very fast and no optimization were required and instead codebase just became more complex and bigger for no reason,
+    so now it reverted back to loading blog posts from javascript big array, and i just write to buffer and set html content to buffer to prevent
+    flickering.
+    <br><br>
+    The script also had curl stuff, script would query all img tags with src and downloads them in the curl and sets src to the donwloaded file,
+    i don't know what i though while doing that it's just bullshit. It had also more fancy worhless formatting, like splitting one .scss file
+    into multiple .css files, even if you could just use style tag, or title bug fancy which expands to icon setter also, why idk.
+    <br><br>
+    But the thing wich was really bad is minipage handling, script were just parse some first tag on each file in directory, which is even
+    limiting, since if in the same folder were image that handeled by minipage it would just break since it's not html.
+    <br><br>
+    Also there were small changes, like in look, background menu how have instead of white lines, lines of color followed by hue of background
+    and not too light, so you can read text better as a side effect. And buttons to the pages no longer just index. Also entrance were removed
+    bcs were no reason to it be.
+    <br><br>
+    Also i removed everything from evil blog because i lazy to move stuff, but don't care it's shitposting were anyway. And also i made quotes
+    fancier.
+</div>
