@@ -1,0 +1,216 @@
+<h1>Learning カタカナ (katakana)</h1>
+<br>
+<div class="box">
+    <h1 class="article-radical">W</h1>hy i learn japaneese sounds? i just got bored and thought that will be
+    fun, also test how good i can remember random data that don't have patterns, just like japaneese katakana
+    characters, it's just random lines that need just remember by force, there's no pattern, so i can see how
+    good i can learn without being limited by primitive school program, a.k.a. learning 6 minutes a day for 30
+    days and every 1, 3, 7, 30 day learn by big, this makes brain to recall and brain remembers by not rereading
+    but by recalling information. So after speaking with AI (i fact checked him) it's actually not that hard, as
+    far as i understand most people that say there's 60000 characters, these are just kanji characters, kanji characters
+    made of 46 sounds, each of these sounds can be represented by katakana (sharp angle writing) and there's other
+    writing but i don't remember it.
+    <br>
+    <br>
+    So yea i try to learn 46 characters, not because i plan to learn japaneese or move to it, no, it's to test how
+    good i can remember completly random data, it requires a lot of stuff to recall, but i'm lazy so i wrote program
+    that i run on console and print few sounds and i need to draw then in katakana format:
+    <br><br>
+<code><pre>
+console.clear();
+a = '';
+for (let i = 0; i &lt; 10; i++) {
+    a += "aiueo".charAt(Math.floor(Math.random() * 5));
+}
+console.log(a);
+</pre></code>
+    <br>
+    Post edit but this junky solution with console not perfect so here's better thing, i expanded canvas
+    <br><br>
+    <h3 id="katakana-random-sequence">kikako</h3>
+    <button id="katakana-random-seq">Random sequence</button>
+    <button id="katakana-random-kat">Random katakana</button>
+    <script>
+        let sounds;
+        let __e;
+    </script>
+    <script>
+        sounds = [
+                'a',  'e',  'i',   'o',  'u', 
+                'ka', 'ke', 'ki',  'ko', 'ku',
+                'sa', 'se', 'shi', 'so', 'su',
+                'ta', 'te', 'chi', 'to', 'tsu',
+                'na', 'ne', 'ni',  'no', 'nu',
+                'ha', 'he', 'hi',  'ho', 'fu',
+                'ma', 'me', 'mi',  'mo', 'mu',
+                'ya',              'yo', 'yu',
+                'ra', 're', 'ri',  'ro', 'ru',
+                'wa',              'n',  'wo'
+        ];
+        __e = document.getElementById('katakana-random-sequence');
+
+        function randomSequence() {   
+            __e.innerHTML = '';
+            for (let i = 0; i < 15; i++) {
+                __e.innerHTML += sounds[Math.floor(Math.random() * sounds.length)] + ' ';
+            }
+        }
+        
+        document.getElementById('katakana-random-kat').addEventListener('click', function() {
+            __e.innerHTML = sounds[Math.floor(Math.random() * sounds.length)];
+        });
+
+        document.getElementById('katakana-random-seq').addEventListener('click', function() {
+            randomSequence();
+        });
+
+        randomSequence();
+    </script>
+    <br><br>
+    We need also canvas to draw on so here it is
+    <br>
+    <br>
+    <div style="text-align: center;">
+        <canvas width="500" height="400" id="cax" style="width: 500px; height: 400px;"></canvas>
+        <br>
+        <button id="cax-clear">Clear canvas</button>
+        <script>
+            let xxxcanvas;
+            /** @type {CanvasRenderingContext2D} **/
+            let xxxctx;
+
+            let prevmhold = 0;
+            let mhold = 0;
+            let omx = 0;
+            let omy = 0;
+            let mx = 0;
+            let my = 0;
+        </script>
+        <script>
+            xxxcanvas = document.getElementById('cax');
+            xxxctx = xxxcanvas.getContext("2d");
+
+            function clearCanvas() {
+                xxxctx.fillStyle = 'white';
+                xxxctx.fillRect(0, 0, 500, 400);
+                xxxctx.fillStyle = 'black';
+            }
+            
+            document.getElementById('cax-clear').addEventListener('click', function() {
+                clearCanvas();
+            });
+
+            document.getElementById('cax').addEventListener('mousemove', function(e) {
+                const rect = xxxcanvas.getBoundingClientRect()
+                mx = event.clientX - rect.left;
+                my = event.clientY - rect.top;
+
+                if (mhold != prevmhold) {
+                    omx = mx;
+                    omy = my;
+                }
+
+                if (mhold) {
+                    xxxctx.beginPath();
+                    xxxctx.lineWidth = 8;
+                    xxxctx.lineCap = "round";
+                    xxxctx.moveTo(omx, omy);
+                    xxxctx.lineTo(mx, my);
+                    xxxctx.stroke();
+                }
+
+                omx = mx;
+                omy = my;
+                prevmhold = mhold;
+            });
+ 
+            document.getElementById('cax').addEventListener('mousedown', function(e) {
+                e.preventDefault();
+                mhold = 1;
+            });
+
+            document.getElementById('cax').addEventListener('mouseup', function() {
+                mhold = 0;
+            });
+
+            clearCanvas();
+        </script>
+    </div>
+    <br>
+    When you move fast it may have space between dots because of latency issue, but you know you're wanted to draw a line
+    and this what matters<br><br>
+
+    But me need to type sound by seeing a symbol, so i need to wrote program that shows image and i must type sound it
+    represent, it's simple, here it is
+    <br>
+    <br>
+    <div id="katakana-div" style="text-align: center;">
+        <img id="katakana-img" src="../media/katakana/a.png">
+        <br>
+        <div style="display: inline-block;">
+            <input type="text" id="katakana-input">
+            <br>
+            <p style="display: inline;" id="katakana-out"></p>
+        </div>
+        <button id="katakana-check"></button>
+        <script>
+            let state;
+            let answer;
+            let roll;
+        </script>
+        <script>
+            answer = sounds[Math.floor(Math.random() * sounds.length)];
+            roll = [];
+
+            function setKatakana() {
+                state = 0;
+                let ca;
+                if (roll.length == sounds.length) roll = [];
+                while(roll.includes(ca = sounds[Math.floor(Math.random() * sounds.length)]));
+                answer = ca;
+                document.getElementById('katakana-img').setAttribute('src', `../media/katakana/${answer}.png`);
+                document.getElementById('katakana-input').value = '';
+                document.getElementById('katakana-out').innerHTML = '';
+                document.getElementById('katakana-check').innerHTML = 'Enter';
+            }
+
+            document.getElementById('katakana-check').addEventListener('click', function() {
+                if (state == 0) {
+                    state = 1;
+
+                    if (answer == document.getElementById('katakana-input').value) {
+                        document.getElementById('katakana-out').innerHTML = 'Correct!';
+                        roll.push(answer);
+                    }
+                    else {
+                        document.getElementById('katakana-out').innerHTML = `Incorrect! Correct answer: ${answer}`;
+                    }
+
+                    document.getElementById('katakana-check').innerHTML = 'Next';
+                }
+                else {
+                    setKatakana();
+                }
+            });
+
+            setKatakana();
+        </script>
+    </div>
+    <br>
+    First day i learned aiueo's katakana symbols, it was simple just first type typing and repetition and i can tell them now,
+    the second day i learned k's katakana's, which was easy too, next day i thought let's make more and remembered 15 katakana symbols,
+    besides smyleyis and longer recalling once on blue moon i remembered them too, on 4-th day (3-rd were just recalling for 6 minutes)
+    i learned rest of katakanas. So it took me 4 days to learn all katakana symbols on decent level, of course i can forget 1 once in a moon
+    and last like 4 rows (h, r, y, w) are harder/slower to recall but this looks like my brain memory indeed bad as i expected.
+    <br>
+    <br>
+    Here's all katakana symbols i wrote without looking up and any hints with a mouse and big brush, on first attempt some were wrong, like 3
+    of them, on second attempt all correct
+    <br>
+    <br>
+    <img src="../media/katakana/all.png" width="650px" height="auto">
+    <br>
+    <br>
+    dakuten/handakuten is ignored since it's just changes sound with suffix, the sound not changed in any way, and also my handwriting as bad
+    as doctor handwriting, i'm kidding doctor handwriting is cursed nightmare
+</div>
