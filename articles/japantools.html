@@ -145,7 +145,7 @@ console.log(a);
     <br>
     <br>
     <div id="katakana-div" style="text-align: center;">
-        <img id="katakana-img" src="../media/katakana/a.png">
+        <img id="katakana-img" src="./media/katakana/a.png">
         <br>
         <div style="display: inline-block;">
             <input type="text" id="katakana-input">
@@ -168,7 +168,7 @@ console.log(a);
                 if (roll.length == sounds.length) roll = [];
                 while(roll.includes(ca = sounds[Math.floor(Math.random() * sounds.length)]));
                 answer = ca;
-                document.getElementById('katakana-img').setAttribute('src', `../media/katakana/${answer}.png`);
+                document.getElementById('katakana-img').setAttribute('src', `./media/katakana/${answer}.png`);
                 document.getElementById('katakana-input').value = '';
                 document.getElementById('katakana-out').innerHTML = '';
                 document.getElementById('katakana-check').innerHTML = 'Enter';
@@ -208,7 +208,7 @@ console.log(a);
     of them, on second attempt all correct
     <br>
     <br>
-    <img src="../media/katakana/all.png" width="650px" height="auto">
+    <img src="./media/katakana/all.png" width="650px" height="auto">
     <br>
     <br>
     dakuten/handakuten is ignored since it's just changes sound with suffix, the sound not changed in any way, and also my handwriting as bad
