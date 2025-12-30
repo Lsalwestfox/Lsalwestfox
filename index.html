@@ -129,11 +129,14 @@
         <a href="./pages/blog.html"><button>Blog</button></a>
         <a href="./pages/evilblog.html"><button>"EvIl" blog</button></a>
         <a href="./pages/very_important.html"><button>Special page</button></a>
+        <!--
         <div class="box">
             <h3>Articles:</h3>
             <div id="article-gen">
             </div>
         </div>
+        -->
+        <br>
         <br>
         <p>End of page, here's big notepad</p>
         <textarea style="width: 650px; height: 500px"></textarea>
@@ -160,10 +163,10 @@
 <script>
     //last is edited at, pre-last is created at
     const articledb = [
-        [ "Learning カタカナ (katakana)",         "japantools", "17/11/2025 at 09:48pm", "28/11/2025 at 09:40am" ],
-        [ "Just use hypermedia (remake)",        "hypmed",     "02/11/2025 at 12:24pm", "02/11/2025 at 12:24pm" ],
-        [ "Redesigning website",                 "redesign",   "02/11/2025 at 05:19pm", "02/11/2025 at 05:19pm" ],
-        [ "Writing advanced todo list CLI util", "atl",        "12/11/2025 at 09:09pm", "12/11/2025 at 09:09pm" ],
+        [ "Learning カタカナ (katakana)",              "japantools", "17/11/2025 at 09:48pm", "28/11/2025 at 09:40am" ],
+        [ "Just use hypermedia (remake)",             "hypmed",     "02/11/2025 at 12:24pm", "02/11/2025 at 12:24pm" ],
+        [ "Redesigning website",                      "redesign",   "02/11/2025 at 05:19pm", "02/11/2025 at 05:19pm" ],
+        [ "Writing advanced todo list CLI util",      "atl",        "12/11/2025 at 09:09pm", "12/11/2025 at 09:09pm" ],
     ];
 
     const titl = document.getElementById('t');
@@ -172,11 +175,13 @@
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
 
+    /*
     with(document.getElementById('article-gen')) {
         for(let i = 0; i < articledb.length; i++) {
             innerHTML += `<h4 class='article-entry' onClick='setArticle(${i})'>- ${articledb[i][0]}</h4>`;
         }
     }
+    */
 
     function setArticle(i) {
         setArticleEx(articledb[i], i);
