@@ -12,9 +12,11 @@
         body {
             background-image: url('../media/ext/evilblogback.gif');
             text-align: center;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             color: red;
             line-height: 1.6;
             font-size: 18px;
+
         }
 
         h1, h5, h6, p, img {
@@ -118,6 +120,7 @@
             position: absolute;
             left: 0;
             bottom: 0;
+            z-index: 1000;
             background-image: url('../media/ext/evilblogfirebg.png');
         }
 
@@ -127,13 +130,15 @@
             position: absolute;
             left: 0;
             bottom: 0;
+            z-index: 1001;
             background-repeat: repeat-x;
             background-image: url('../media/ext/evilblogfire.gif');
         }
 
         #vfx {
+            pointer-events: none;
             position: absolute;
-            z-index: -999999;
+            z-index: 999;
             height: 100vh;
             width: 100vw;
             left: 0;
@@ -235,6 +240,15 @@
     }
 
     const postsdb = [
+        ['69/69/6969', '69:69AM', blogtext(""), []],
+        ['24/02/2026', '08:14PM', blogimagectr("notmymeme1.png"), ['meme']],
+        ['00/00/0000', '00:00XM', blogtext("We all danced in fire<br>Trapped in this machine<br>Don't know how long we've waited<br>As the Eggman's watching<br>We all danced in fire<br>Looking through the screen<br>Don't know how long we've waited<br>As the Eggman watches"), []],
+        ['23/02/2026', '10:56PM', blogimagectr("./libsandpeta.png"), ['meme']],
+        ['23/02/2026', '10:37PM', blogtext("i probably should have been report that i use windows 11 now but i don't care, also minimages are back!"), ['retard']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],
+        ['23/02/2026', '09:22PM', blogimage('memes_2/wholesomeiguess.png'), ['obama']],
         ['12/99/2025', 'fuckyou', blogtext("get bored typing bullshit, some of it may not, but typing shitpost is actually hard"), ['4']],
         ['12/99/2025', 'fuckyou', `<video width="100%" controls><source src="../media/warning_controversial_images/twerking_chicken.mp4" type="video/mp4"> Get a good browser</video>`, []],
         ['99/99/2763', '99:99PM', blogtext("obamaprism's of nation of the chair watching you!"), ['chairpropaganda', 'chair', 'propaganda']],

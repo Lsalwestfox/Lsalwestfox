@@ -12,6 +12,7 @@
             color: white;
             line-height: 1.6;
             font-size: 18px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         button {
@@ -129,13 +130,26 @@
         <a href="./pages/blog.html"><button>Blog</button></a>
         <a href="./pages/evilblog.html"><button>"EvIl" blog</button></a>
         <a href="./pages/very_important.html"><button>Special page</button></a>
-        <!--
         <div class="box">
             <h3>Articles:</h3>
             <div id="article-gen">
             </div>
         </div>
-        -->
+        <div class="box">
+            <h3>Links:</h3>
+            <div>
+                <a href="https://fontlibrary.org/en/font/vegur"><h4 class="article-entry">- The only free CC-0 font i could find that is normal</h4></a>
+                <a href="http://www.directxtutorial.com/Lesson.aspx?lessonid=9-4-1"><h4 class="article-entry">- DirectX9 tutorial that i used before switching to DX11, not perfect</h4></a>
+                <a href="https://github.com/Lsalwestfox"><h4 class='article-entry'>- My github</h4></a>
+                <a href="https://arachnoid.com/latex/"><h4 class='article-entry'>- LaTeX editor</h4></a>
+                <a href="https://jorenar.com/blog/less-known-c"><h4 class='article-entry'>- Lesser known C features</h4></a>
+                <a href="https://evanw.github.io/float-toy/"><h4 class="article-entry">- IEEE-754 N-percition floating point number toy</h4></a>
+                <a href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html"><h4 class="article-entry">- The only good coding style</h4></a>
+                <a href="https://www.tablesgenerator.com/markdown_tables#"><h4 class="article-entry">- Markdown table editor</h4></a>
+                <a href="https://www.behindthename.com/random/"><h4 class="article-entry">- Random name generator, programmer can't made up names yea i know</h4></a>
+                <a href="https://github.com/Eversmile12/OpenGLNative/blob/master/OpenGL/OpenGL/src/WinMain.cpp"><h4 class="article-entry">- File where opengl was set up with winapi</h4></a>
+            </div>
+        </div>
         <br>
         <br>
         <p>End of page, here's big notepad</p>
@@ -163,10 +177,9 @@
 <script>
     //last is edited at, pre-last is created at
     const articledb = [
-        [ "Learning カタカナ (katakana)",              "japantools", "17/11/2025 at 09:48pm", "28/11/2025 at 09:40am" ],
-        [ "Just use hypermedia (remake)",             "hypmed",     "02/11/2025 at 12:24pm", "02/11/2025 at 12:24pm" ],
-        [ "Redesigning website",                      "redesign",   "02/11/2025 at 05:19pm", "02/11/2025 at 05:19pm" ],
-        [ "Writing advanced todo list CLI util",      "atl",        "12/11/2025 at 09:09pm", "12/11/2025 at 09:09pm" ],
+        [ "Minimalism: Ugly",             "minimalism", "23/02/2026 at 09:57PM", "23/02/2026 at 09:57PM" ],
+        [ "Just use hypermedia (remake)", "hypmed",     "02/11/2025 at 12:24pm", "02/11/2025 at 12:24pm" ],
+        [ "Redesigning website",          "redesign",   "02/11/2025 at 05:19pm", "02/11/2025 at 05:19pm" ],
     ];
 
     const titl = document.getElementById('t');
@@ -175,19 +188,20 @@
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
 
-    /*
     with(document.getElementById('article-gen')) {
         for(let i = 0; i < articledb.length; i++) {
-            innerHTML += `<h4 class='article-entry' onClick='setArticle(${i})'>- ${articledb[i][0]}</h4>`;
+            innerHTML += `<h4 class='article-entry' onClick='setArticle("${articledb[i][1]}")'>- ${articledb[i][0]}</h4>`;
         }
     }
-    */
 
-    function setArticle(i) {
-        setArticleEx(articledb[i], i);
+    function setArticle(x) {
+        for (article of articledb) {
+            if (article[1] == x)
+                setArticleEx(article);
+        }
     }
 
-    function setArticleEx(articl, i) {
+    function setArticleEx(articl) {
         titl.innerHTML = articl[0];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", `./articles/${articl[1]}.html`, true);
@@ -210,7 +224,7 @@
         xhr.send();
         mainbox.classList.add('hidden');
         articlebox.classList.remove('hidden');
-        params.set("article", i);
+        params.set("article", articl[1]);
         window.history.replaceState({}, '', `${url.pathname}?${params}`);
     }
 
@@ -266,9 +280,7 @@
     setInterval(() => {
         hue = (hue + 1) % 360;
     }, 200);
-
-    const draws = [];
-
+ 
     setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         canvas.width = window.innerWidth;
@@ -290,10 +302,6 @@
                 resetParticle(part);
             }
             objects[i] = part;
-        }
-
-        for(draw of draws) {
-            draw();
         }
     }, 10);
 </script>
