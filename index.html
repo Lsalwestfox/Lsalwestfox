@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <title id="t">Lsalwestfox Site</title>
+    <title id="t">Lsalwestfox site</title>
+    <link rel="shortcut icon" href="webicon.gif" type="image/x-icon">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
         * {
             padding: 0;
@@ -11,37 +13,38 @@
             text-align: center;
             color: white;
             line-height: 1.6;
-            font-size: 18px;
+            font-size: 16px;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background-image: url(space_background.jpg);
         }
 
         button {
+            margin-bottom: 8px;
             width: 100px;
-            height: 50px;
+            height: 24px;
 
-            background-color: blue;
+            background-image: url(button.jpg);
             border-color: white;
             color: white;
         }
 
         button:hover {
-            background-color: blueviolet;
-            transform: translateY(-5px) scale(1.1);
-            filter: drop-shadow(0px 0px 5px black);
+            transform: translateY(-4px) scale(1.1);
+            filter: drop-shadow(0px 0px 4px black);
         }
 
         blockquote {
-            border-left: 5px solid #fff;
+            border-left: 4px solid #fff;
             margin-left: 20px;
-            padding-left: 5px;
+            padding-left: 4px;
             background-color: #f9f9f920;
         }
 
         blockquote footer {
             text-align: right;
             font-size: 1em;
-            margin-top: 10px;
-            padding-right: 10px;
+            margin-top: 12px;
+            padding-right: 12px;
         }
 
         a {
@@ -50,7 +53,7 @@
         }
 
         a:hover {
-            border-top: 5px solid #fff;
+            border-top: 4px solid #fff;
             text-decoration: none;
         }
 
@@ -62,6 +65,13 @@
             padding-left: calc(50% - 390px);
             width: 780px;
             text-align: left;
+            display: flex;
+        }
+
+        .box-stylized {
+            background-color: rgba(0, 0, 0, 0.45);
+            padding: 0 8px;
+            border: 1px solid white;
         }
 
         .article-entry {
@@ -94,13 +104,37 @@
             padding-left: 32px;
         }
 
+        .panel {
+            height: 31px;
+            width: 88px;
+        }
+
         #vfx {
             position: absolute;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -99999999;
+            z-index: -9999;
+            opacity: 0.5;
+        }
+
+        #space-background {
+            position: absolute;
+            top: 0vh;
+            left: 0vw;
+            width: 100vw;
+            height: 100vh;
+            z-index: -999999;
+        }
+
+        #earth {
+            position: absolute;
+            top: -10vh;
+            left: -30vh;
+            width: 100vh;
+            height: 100vh;
+            z-index: -99999;
         }
 
         #article > .box {
@@ -110,137 +144,64 @@
     </style>
 </head>
 <body>
+    <img src="space_background.jpg" id="space-background"></img>
+    <img src="earth.png" id="earth">
     <canvas id="vfx"></canvas>
     <div id="main">
         <br>
         <br>
-        <img src="./media/title.png" id="title">
+        <img src="title.png" id="title">
         <br>
         <br>
-        <a href="./index.html"><img src="./media/btn.png"></a>
         <br>
-        <h3>I'm lsalwestfox (first letter not pronounced)</h3>
-        <h5>Also knnown as Zorin</h5>
-        <h3 id="asl">A/S/L: {}M/Ukraine</h3>
-        <h3>Discord: imnotbillcipher</h3>
-        <script>with(document.getElementById('asl')) {
-            innerHTML = innerHTML.replace('{}', new Date().getFullYear() - 2009);
-        }</script>
-        <br>
-        <a href="./pages/blog.html"><button>Blog</button></a>
-        <a href="./pages/evilblog.html"><button>"EvIl" blog</button></a>
-        <a href="./pages/very_important.html"><button>Special page</button></a>
         <div class="box">
-            <h3>Articles:</h3>
-            <div id="article-gen">
+            <div class="box-stylized" style="width: 100%; margin-right: 8px">
+                <h3>I'm lsalwestfox (first letter not pronounced), also known as Zorin</h3>
+                <h3 id="asl">A/S/L: {}M/Ukraine</h3>
+                <h3>Discord: imnotbillcipher</h3>
+            </div>
+            <div class="box-stylized" style="padding-top: 8px">
+                <a href="blog.html"><button>Blog</button></a><br>
+                <a href="https://github.com/Lsalwestfox"><button>My github</button></a><br>
+                <a href="very_important.html"><button>Special page</button></a><br>
             </div>
         </div>
-        <div class="box">
-            <h3>Links:</h3>
-            <div>
+        <div class="box" style="margin-top: 8px">
+            <div class="box-stylized" style="width: 104px; padding-top: 8px;">
+                <img class="panel" src="panel_1.png">
+                <img class="panel" src="panel_2.png">
+                <img class="panel" src="panel_3.png">
+                <img class="panel" src="panel_4.png">
+                <img class="panel" src="panel_5.png">
+                <img class="panel" src="panel_6.png">
+                <img class="panel" src="panel_7.png">
+            </div>
+            <div class="box-stylized" style="width: 100%; margin-left: 8px; padding-bottom: 8px">
+                <h3>Links</h3>
                 <a href="https://fontlibrary.org/en/font/vegur"><h4 class="article-entry">- The only free CC-0 font i could find that is normal</h4></a>
-                <a href="https://github.com/Lsalwestfox"><h4 class='article-entry'>- My github</h4></a>
+                <a href="https://notisrac.github.io/FileToCArray/"><h4 class='article-entry'>- Any file to .inc one</h4></a>
                 <a href="https://arachnoid.com/latex/"><h4 class='article-entry'>- LaTeX editor</h4></a>
                 <a href="https://jorenar.com/blog/less-known-c"><h4 class='article-entry'>- Lesser known C features</h4></a>
                 <a href="https://evanw.github.io/float-toy/"><h4 class="article-entry">- IEEE-754 N-percition floating point number toy</h4></a>
-                <a href="https://www.kernel.org/doc/html/v4.10/process/coding-style.html"><h4 class="article-entry">- The only good coding style</h4></a>
                 <a href="https://www.tablesgenerator.com/markdown_tables#"><h4 class="article-entry">- Markdown table editor</h4></a>
-                <a href="https://www.behindthename.com/random/"><h4 class="article-entry">- Random name generator, programmer can't made up names yea i know</h4></a>
+                <a href="https://www.behindthename.com/random/"><h4 class="article-entry">- Random name generator</h4></a>
                 <a href="https://github.com/Eversmile12/OpenGLNative/blob/master/OpenGL/OpenGL/src/WinMain.cpp"><h4 class="article-entry">- File where opengl was set up with winapi</h4></a>
+                <a href="https://compresspng.com/"><h4 class="article-entry">- Image color reducer, and thus compression</h4></a>
             </div>
         </div>
-        <br>
-        <br>
-        <p>End of page, here's big notepad</p>
-        <textarea style="width: 650px; height: 500px"></textarea>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <script>with(document.getElementById('asl')) {
+            innerHTML = innerHTML.replace('{}', new Date().getFullYear() - 2009);
+        }</script>
     </div>
     <div id="article" class="hidden"></div>
 </body>
-<script>
-    //last is edited at, pre-last is created at
-    const articledb = [
-        [ "Minimalism: Ugly",             "minimalism", "23/02/2026 at 09:57PM", "23/02/2026 at 09:57PM" ],
-        [ "Just use hypermedia (remake)", "hypmed",     "02/11/2025 at 12:24pm", "02/11/2025 at 12:24pm" ],
-        [ "Redesigning website",          "redesign",   "02/11/2025 at 05:19pm", "02/11/2025 at 05:19pm" ],
-    ];
-
-    const titl = document.getElementById('t');
-    const articlebox = document.getElementById('article');
-    const mainbox = document.getElementById('main');
-    const url = new URL(window.location.href);
-    const params = new URLSearchParams(url.search);
-
-    with(document.getElementById('article-gen')) {
-        for(let i = 0; i < articledb.length; i++) {
-            innerHTML += `<h4 class='article-entry' onClick='setArticle("${articledb[i][1]}")'>- ${articledb[i][0]}</h4>`;
-        }
-    }
-
-    function setArticle(x) {
-        for (article of articledb) {
-            if (article[1] == x)
-                setArticleEx(article);
-        }
-    }
-
-    function setArticleEx(articl) {
-        titl.innerHTML = articl[0];
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", `./articles/${articl[1]}.html`, true);
-        xhr.onreadystatechange = function() {
-            if(xhr.readyState === 4 && xhr.status === 200) {
-                articlebox.innerHTML = `<br><h3>Created: ${articl[2]}</h3><h3>Edited: ${articl[3]}</h3><h3 class='article-exit' onClick='exitArticle()'>Go to main</h3><br>${xhr.responseText}<br><br><br><br><br><br><br><br><br><br>`;
-                const scripts = articlebox.getElementsByTagName('script');
-                for(script of scripts) {
-                    const script_out = document.createElement('script');
-                    script_out.type = script.type || 'text/javascript';
-                    if(script.src) {
-                        script_out.src = script.src;
-                    } else {
-                        script_out.text = script.innerHTML;
-                    }
-                    document.body.appendChild(script_out);
-                }
-            }
-        }
-        xhr.send();
-        mainbox.classList.add('hidden');
-        articlebox.classList.remove('hidden');
-        params.set("article", articl[1]);
-        window.history.replaceState({}, '', `${url.pathname}?${params}`);
-    }
-
-    function exitArticle() {
-        titl.innerHTML = 'Lsalwestfox Site';
-        mainbox.classList.remove('hidden');
-        articlebox.classList.add('hidden');
-        window.history.replaceState({}, '', url.pathname);
-    }
-
-    if(params.has("article")) {
-        setArticle(params.get("article"));
-    }
-</script>
-<script> // script for fargo (terraria mod) menu effect
+<script> // script for background
+    const space = document.getElementById('space-background');
+    const earth = document.getElementById('earth');
     const canvas = document.getElementById('vfx');
-    window.onscroll = () => canvas.style.top = `${window.pageYOffset}px`;
+    document.addEventListener('scroll', () => canvas.style.top = `${window.pageYOffset}px`, { passive: true });
+    document.addEventListener('scroll', () => earth.style.top = `calc(${window.pageYOffset}px - 10vh)`, { passive: true });
+    document.addEventListener('scroll', () => space.style.top = `${window.pageYOffset}px`, { passive: true });
     const title = document.getElementById('title');
     /** @type {CanvasRenderingContext2D} */
     const ctx = canvas.getContext("2d");
@@ -260,6 +221,12 @@
         let scale = 1 + Math.sin(lerp * Math.PI) * scalepengilum;
         let angle = Math.sin(0.5  * Math.PI * (lerp + 0.5)) * anglepengilum;
         title.style.transform = `rotateZ(${angle}deg) scale(${scale})`;
+    }, 10);
+
+    let rot01 = 0;
+    setInterval(() => {
+        rot01 = (rot01 + 0.005) % 360;
+        earth.style.transform = `rotateZ(${rot01}deg)`;
     }, 10);
 
     for(let i = 0; i < particles; i++) {
@@ -302,5 +269,11 @@
             }
             objects[i] = part;
         }
+
+        document.querySelectorAll('.box-stylized').forEach(el => {
+            el.style.borderColor = `hsl(${hue}, 66.36%, 43.14%)`;
+            el.style.backgroundColor = `hsla(${hue}, 67.90%, 15%, 0.5)`;
+        });
     }, 10);
 </script>
+

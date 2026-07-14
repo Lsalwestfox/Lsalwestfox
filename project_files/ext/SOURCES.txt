@@ -1,0 +1,7 @@
+blogicn.gif -> https://www.cameronsworld.net/img/content/21/19.gif
+blogvfx.js -> https://kallistero.neocities.org/things/i/made/scripts/wireframe_gridlines.js
+evilblogicn.gif -> https://www.cameronsworld.net/img/content/33/34.gif
+evilblogback.gif -> https://anlucas.neocities.org/blackgranite.gif
+evilblogpostbg.png -> https://www.cameronsworld.net/img/content/32/bg.png
+evilblogfirebg.png -> https://www.cameronsworld.net/img/content/33/bg.png
+evilblogfire.gif -> https://www.cameronsworld.net/img/content/32/100.gif
