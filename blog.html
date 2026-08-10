@@ -112,10 +112,40 @@
 </head>
 <body>
     <div id="img-preview" class="hidden"></div>
-    <h1>Lsalwestfox's Blog</h1>
-    <p>Is it blog? I don't know. Images are heavily compressed, but by clicking on them you can view uncompressed version, grep for ID:[ID] to get specific post</p>
+    <h1>Lsalwestfox's "Blog" or something</h1>
+    <p>Images are heavily compressed, but by clicking on them you can view uncompressed version, grep for ID:[ID] to get specific post.</p>
+    <p>I can sometimes edit old posts but that usually for fixing grammar errors. :3</p>
     <a href="index.html"><button>Back</button></a><br>
     <div class="posts">
+        <post time="08:24AM" date="08/10/2026">
+            <p>I did string reader and writer library, it took only few hours and testing it was not that bad actually, the only thing left is
+            adding documentation, which is tedious.</p>
+        </post>
+        <post time="10:11PM" date="08/08/2026">
+            <details>
+                <summary>CW: politics mentioned</summary>
+                <img loading="lazy" src="blog_images/political_meme1_compressed.jpg" u="blog_images/political_meme1.png">
+            </details>
+        </post>
+        <post time="10:02PM" date="08/08/2026">
+            <p>I did sio.h (stdio extensions) library, directory part of it is retarted but API is simple and that was purpose, anyway, tomorrow i'm going
+            to make string reader and string writer, just like sio 5 hours of work will be done to writing unit tests for different cases, the only part
+            that demotivates me enough to drop project. It's not that they are difficult, just tedious and boring.</p>
+        </post>
+        <post time="09:48PM" date="08/07/2026">
+            <p>I should tell progress at least to myself, I'm currently working on my own set of "stb"-like libraries, primary for myself so i could do projects faster
+            by not writing all the same stuff, currently I'm doing stdio+, which are stdio extensions, for example, reading entire file, utf-8 support, filesystem api
+            and so on.</p>
+        </post>
+        <post time="08:06PM" date="08/05/2026">
+            <p>C/C++ build systems are retarted, just use C99, 2 files, one header library, one source which is code of the build script and just use compiler to boostrap it,
+            then every time you change something in a build script it will rebuild itself</p>
+            <img loading="lazy" src="blog_images/puar-compressed.png" u="blog_images/puar.png">
+        </post>
+        <post time="06:48PM" date="07/27/2026">
+            <p>This is the only time I actually stopped in the game to took screenshot</p>
+            <img loading="lazy" src="blog_images/minecraft-compressed.jpg" u="blog_images/minecraft.png">
+        </post>
         <post time="01:27PM" date="07/08/2026">
             <p>This is first post ever</p>
         </post>
@@ -147,5 +177,7 @@
     ImagePreview.addEventListener('click', () => {
         ImagePreview.classList.add('hidden');
     });
+    
+    document.addEventListener('scroll', () => ImagePreview.style.top = `${window.pageYOffset}px`, { passive: true });
 </script>
 

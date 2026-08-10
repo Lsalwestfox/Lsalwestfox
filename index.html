@@ -156,7 +156,7 @@
         <br>
         <div class="box">
             <div class="box-stylized" style="width: 100%; margin-right: 8px">
-                <h3>I'm lsalwestfox (first letter not pronounced), also known as Zorin</h3>
+                <h3>I'm lsalwestfox (first letter not pronounced), but you can call me Zorin</h3>
                 <h3 id="asl">A/S/L: {}M/Ukraine</h3>
                 <h3>Discord: imnotbillcipher</h3>
             </div>
@@ -189,12 +189,44 @@
                 <a href="https://compresspng.com/"><h4 class="article-entry">- Image color reducer, and thus compression</h4></a>
             </div>
         </div>
+        <div class="box">
+            <div class="box-stylized" style="width: 100%; margin-top: 8px">
+                <h2>About myself</h2>
+                <h3>I'm a human, yea my conversation skills are in the mud, anyway, I'm C dev and soon I'll migrate to Jai because it's better,
+                in my opinion I'm good dev, but that my opinion of course so it's inheretly biased, I beat sonic heroes and half life 2,
+                to be honest I don't have to tell a lot about myself yet, I don't want to be like avarage retard that spams skills like
+                some badges and tells that npm is a skill somehow. Oh and I have very terrible voice.</h3>
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-stylized" style="width: 100%; margin-top: 8px">
+                <img id="random-image" style="padding-top: 8px; width: 100%">
+            </div>
+        </div>
+        <br>
         <script>with(document.getElementById('asl')) {
             innerHTML = innerHTML.replace('{}', new Date().getFullYear() - 2009);
         }</script>
     </div>
-    <div id="article" class="hidden"></div>
 </body>
+<script> // random image
+    const image_prop = "zorin__image_index";
+    const images = [
+        'random_images/cat_therapy.png',
+        'random_images/cat_cocainum.png',
+        'random_images/puar_smiling_1.jpg',
+        'random_images/puar_smiling_2.jpg',
+        'random_images/WTF.jpg',
+    ];
+    let id = localStorage.getItem('zorin__image_index');
+    if (!id) {
+        id = 0;
+    } else {
+        id = +id;
+    }
+    localStorage.setItem('zorin__image_index', id + 1);
+    document.getElementById('random-image').src = images[id % images.length];
+</script>
 <script> // script for background
     const space = document.getElementById('space-background');
     const earth = document.getElementById('earth');
