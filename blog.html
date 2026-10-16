@@ -9,6 +9,11 @@
             margin: 0;
             padding: 0;
         }
+
+        html:has(.img-preview:target),
+        body:has(.img-preview:target) {
+            overflow: hidden;
+        }
     
         body {
             background-image: url(blog_background.gif);
@@ -16,19 +21,49 @@
             color: white;
             line-height: 1;
             font-size: 24px;
+            counter-reset: post-id 14;
         }
 
         h1 {
             font-size: 48px;
         }
+        
+        posts {
+            display: block;
+            width: 780px;
+            min-height: 12px;
+            margin-left: calc(50% - 390px);
+            text-align: left;
+        }
+
+        post::before {
+            content: attr(date) " at " attr(time) ", ID:" counter(post-id);
+            display: block;
+        }
 
         post {
+            counter-increment: post-id -1;
             background-image: url(post_background.jpg);
             border-radius: 8px;
-            min-width: 100%;
+            width: 770px;
             display: block;
             margin-top: 16px;
             overflow: hidden;
+            padding-top: 8px;
+            padding-left: 8px;
+            padding-bottom: 8px;
+        }
+
+        post > d {
+            width: calc(100% - 24px);
+            display: block;
+            background-color: white;
+            color: black;
+            margin-top: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
 
         button {
@@ -45,151 +80,159 @@
             transform: translateY(-4px) scale(1.1);
             filter: drop-shadow(0px 0px 4px black);
         }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .posts {
-            width: 780px;
-            min-height: 12px;
-            margin-left: calc(50% - 390px);
-            text-align: left;
-        }
-
-        .post-title {
-            padding-left: 8px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-        }
-
-        .post-content {
-            width: calc(100% - 24px);
-            margin-left: 8px;
-            margin-bottom: 8px;
-            padding-left: 8px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            background-color: white;
-            color: black;
-        }
         
-        .post-content > img {
-            padding-top: 8px;
-            display: block;
-            height: 333px;
-            width: auto;
-        }
-
-        .post-content > img:hover {
-            transform: translateY(-4px) scale(1.05);
-            filter: drop-shadow(0px 0px 4px black);
-            cursor: pointer;
-        }
-
-        #img-preview {
+        a[img-preview] {
             background-color: rgba(0, 0, 0, 0.5);
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100vh;
-            width: 100vw;
-            cursor: pointer;
-            text-align: center;
-            display: block;
-            align-content: center;
+            position: fixed;
+            display: none;
+            inset: 0;
             z-index: 9999999;
+            place-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
 
-        #img-preview > img {
+        a[img-preview]:target {
+            display: grid;
+        }
+
+        a[img-preview] > img {
             max-height: 80%;
             max-width: 80%;
             width: auto;
             height: auto;
             object-fit: contain;
         }
+
+        a[image] > img {
+            padding-top: 8px;
+            display: block;
+            height: 333px;
+            width: auto;
+        }
+
+        a[image] > img:hover {
+            transform: translateY(-4px) scale(1.05);
+            filter: drop-shadow(0px 0px 4px black);
+            cursor: pointer;
+        }
+
+        @keyframes xmas-scroll {
+            to { background-position-x: 512px; }
+        }
+        
+        #xmas-thingy {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 25px;
+            z-index: 9999;
+            background-image: url(xmas_thingy.png);
+            background-repeat: repeat-x;
+            background-position-x: 0px;
+            background-position-y: center;
+            animation: xmas-scroll 4s steps(16, end) infinite;
+        }
     </style>
 </head>
 <body>
     <div id="img-preview" class="hidden"></div>
+    <div id="xmas-thingy"></div>
+    <br>
+    <br>
     <h1>Lsalwestfox's "Blog" or something</h1>
     <p>Images are heavily compressed, but by clicking on them you can view uncompressed version, grep for ID:[ID] to get specific post.</p>
     <p>I can sometimes edit old posts but that usually for fixing grammar errors. :3</p>
     <a href="index.html"><button>Back</button></a><br>
-    <div class="posts">
-        <post time="07:22PM" date="09/17/2026">
-            <p>I didn't liked other editors very much so I'm making my own text editor, here the editor running in debug build at 5,000-6,000fps,
-            the same thing on speed build with size of 120x64 cells runs at around 10,000fps. Currently working on actual heart of the editor, i.e.
-            editing i.e. buffers, thank god i don't need word wrapping</p>
-            <img loading="lazy" src="blog_images/fox-edit-compressed.png" u="blog_images/fox-edit.png">
+    <posts>
+        <post date="10/16/2026" time="01:52OM">
+            <d>
+                <p>I'm making a MDI file explorer. I just my lazyness don't stick to me again and I actually finish it</p>
+            </d>
         </post>
-        <post time="08:50PM" date="09/11/2026">
-            <p>I did 0 progress in this time, my laziness baffles me</p>
+        <post date="09/26/2026" time="03:12PM">
+            <d>
+                <p>I canceled project, I didn't cared that much</p>
+            </d>
         </post>
-        <post time="03:16PM" date="08/22/2026">
-            <p>Turned out that writing tools were worthless, so i'll just do a game, simple one to start off</p>
+        <post date="09/24/2026" time="10:33AM">
+            <d>
+                <p>I slacked again but still writing editor, text displayed properly and I even added word wrapping support, it was not that difficult</p>
+            </d>
         </post>
-        <post time="08:24AM" date="08/10/2026">
-            <p>I did string reader and writer library, it took only few hours and testing it was not that bad actually, the only thing left is
-            adding documentation, which is tedious.</p>
+        <post date="09/17/2026" time="04:22PM">
+            <d>
+                <p>I didn't liked other editors very much so I'm making my own text editor, here the editor running in debug build at 5,000-6,000fps,
+                the same thing on speed build with size of 120x64 cells runs at around 10,000fps. Currently working on actual heart of the editor, i.e.
+                editing i.e. buffers, thank god I don't need word wrapping</p>
+                <a image href="#preview-4"><img loading="lazy" src="blog_images/fox-edit-compressed.png"></a>
+            </d>
         </post>
-        <post time="10:11PM" date="08/08/2026">
-            <details>
-                <summary>CW: politics mentioned</summary>
-                <img loading="lazy" src="blog_images/political_meme1_compressed.jpg" u="blog_images/political_meme1.png">
-            </details>
+        <post date="09/11/2026" time="05:50PM">
+            <d>
+                <p>I did 0 progress in this time, my laziness baffles me</p>
+            </d>
         </post>
-        <post time="10:02PM" date="08/08/2026">
-            <p>I did sio.h (stdio extensions) library, directory part of it is retarted but API is simple and that was purpose, anyway, tomorrow i'm going
-            to make string reader and string writer, just like sio 5 hours of work will be done to writing unit tests for different cases, the only part
-            that demotivates me enough to drop project. It's not that they are difficult, just tedious and boring.</p>
+        <post date="08/22/2026" time="12:16PM">
+            <d>
+                <p>Turned out that writing tools were worthless, so I'll just do a game, simple one to start off</p>
+            </d>
         </post>
-        <post time="09:48PM" date="08/07/2026">
-            <p>I should tell progress at least to myself, I'm currently working on my own set of "stb"-like libraries, primary for myself so i could do projects faster
-            by not writing all the same stuff, currently I'm doing stdio+, which are stdio extensions, for example, reading entire file, utf-8 support, filesystem api
-            and so on.</p>
+        <post date="08/10/2026" time="05:24AM">
+            <d>
+                <p>I did string reader and writer library, it took only few hours and testing it was not that bad actually, the only thing left is
+                adding documentation, which is tedious.</p>
+            </d>
         </post>
-        <post time="08:06PM" date="08/05/2026">
-            <p>C/C++ build systems are retarted, just use C99, 2 files, one header library, one source which is code of the build script and just use compiler to boostrap it,
-            then every time you change something in a build script it will rebuild itself</p>
-            <img loading="lazy" src="blog_images/puar-compressed.png" u="blog_images/puar.png">
+        <post date="08/08/2026" time="07:11PM">
+            <d>
+                <details>
+                    <summary>CW: politics mentioned</summary>
+                    <a image href="#preview-3"><img loading="lazy" src="blog_images/political_meme1_compressed.jpg"></a>
+                </details>
+            </d>
         </post>
-        <post time="06:48PM" date="07/27/2026">
-            <p>This is the only time I actually stopped in the game to took screenshot</p>
-            <img loading="lazy" src="blog_images/minecraft-compressed.jpg" u="blog_images/minecraft.png">
+        <post date="08/08/2026" time="07:02PM">
+            <d>
+                <p>I did sio.h (stdio extensions) library, directory part of it is retarted but API is simple and that was purpose, anyway, tomorrow I'm going
+                to make string reader and string writer, just like sio 5 hours of work will be done to writing unit tests for different cases, the only part
+                that demotivates me enough to drop project. It's not that they are difficult, just tedious and boring.</p>
+            </d>
         </post>
-        <post time="01:27PM" date="07/08/2026">
-            <p>This is first post ever</p>
+        <post date="08/07/2026" time="06:48PM">
+            <d>
+                <p>I should tell progress at least to myself, I'm currently working on my own set of "stb"-like libraries, primary for myself so I could do projects faster
+                by not writing all the same stuff, currently I'm doing stdio+, which are stdio extensions, for example, reading entire file, utf-8 support, filesystem api
+                and so on.</p>
+            </d>
         </post>
-    </div>
+        <post date="08/05/2026" time="05:06PM">
+            <d>
+                <p>C/C++ build systems are retarted, just use C99, 2 files, one header library, one source which is code of the build script and just use compiler to boostrap it,
+                then every time you change something in a build script it will rebuild itself</p>
+                <a image href="#preview-2"><img loading="lazy" src="blog_images/puar-compressed.png"></a>
+            </d>
+        </post>
+        <post date="07/27/2026" time="03:48PM">
+            <d>
+                <p>This is the only time I actually stopped in the game to took screenshot</p>
+                <a image href="#preview-1"><img loading="lazy" src="blog_images/minecraft-compressed.jpg"></a>
+            </d>
+        </post>
+        <post date="07/08/2026" time="10:27AM">
+            <d>
+                <p>This is first post ever</p>
+            </d>
+        </post>
+    </posts>
     <br>
     <br>
     <br>
     <br>
     <br>
+    <a img-preview id="preview-4" href="#hook-4"><img loading="lazy" src="blog_images/fox-edit.png"></a>
+    <a img-preview id="preview-3" href="#hook-3"><img loading="lazy" src="blog_images/political_meme1.png"></a>
+    <a img-preview id="preview-2" href="#hook-2"><img loading="lazy" src="blog_images/puar.png"></a>
+    <a img-preview id="preview-1" href="#hook-1"><img loading="lazy" src="blog_images/minecraft.png"></a>
 </body>
-<script>
-    const ImagePreview = document.getElementById('img-preview');
-    const Posts = document.querySelectorAll('post');
-    let Id = Posts.length;
-
-    Posts.forEach((e) => {
-        const time = e.getAttribute('time');
-        const date = e.getAttribute('date');
-        const content = e.innerHTML;
-        e.innerHTML = `<p class="post-title">${date} at ${time}, ID:${--Id}</p><div class="post-content">${content}</div>`;
-        e.querySelectorAll('img').forEach((i) => {
-            i.addEventListener('click', () => {
-                ImagePreview.innerHTML = `<img src="${i.getAttribute('u')}">`;
-                ImagePreview.classList.remove('hidden');
-            });
-        });
-    });
-
-    ImagePreview.addEventListener('click', () => {
-        ImagePreview.classList.add('hidden');
-    });
-    
-    document.addEventListener('scroll', () => ImagePreview.style.top = `${window.pageYOffset}px`, { passive: true });
-</script>
-
