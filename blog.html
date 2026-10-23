@@ -44,6 +44,7 @@
         post {
             counter-increment: post-id -1;
             background-image: url(post_background.jpg);
+            background-position-x: 200px;
             border-radius: 8px;
             width: 770px;
             display: block;
@@ -60,10 +61,7 @@
             background-color: white;
             color: black;
             margin-top: 8px;
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 8px;
-            padding-bottom: 8px;
+            padding: 8px;
         }
 
         button {
@@ -134,6 +132,36 @@
             background-position-y: center;
             animation: xmas-scroll 4s steps(16, end) infinite;
         }
+        
+        @media (max-width: 799px) {
+            posts {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            post::before {
+                padding-left: 8px;
+            }
+
+            post {
+                width: 100%;
+                padding-left: 0;
+                border-radius: 0;
+            }
+
+            post > d {
+                width: 100%;
+            }
+
+            post > d > p {
+                width: calc(100% - 16px);
+            }
+
+            a[image] > img {
+                width: calc(100% - 16px);
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -142,11 +170,22 @@
     <br>
     <br>
     <h1>Lsalwestfox's "Blog" or something</h1>
-    <p>Images are heavily compressed, but by clicking on them you can view uncompressed version, grep for ID:[ID] to get specific post.</p>
-    <p>I can sometimes edit old posts but that usually for fixing grammar errors. :3</p>
+    <p>Images are heavily compressed, but by clicking on them you can view uncompressed version</p>
+    <p>Grep for ID:[ID] to get specific post.</p>
+    <p>I can sometimes edit old posts but that usually for fixing grammar errors.</p>
+    <p>Time and dates are in UTC :3</p>
     <a href="index.html"><button>Back</button></a><br>
     <posts>
-        <post date="10/16/2026" time="01:52OM">
+        <post date="10/23/2026" time="07:07PM">
+            <d>
+                <p>
+                    Actually I'll make file explorer after Jai's release, meanwhile I'll just do game on dx11, this 2 games at once but
+                    I just alternate between them each 1-2 days. Also I'll make design mobile-friendly, desktop of course takes priority
+                    because IMO mobile-first development is cancer to high-quality software or websites.
+                </p>
+            </d>
+        </post>
+        <post date="10/16/2026" time="01:52PM">
             <d>
                 <p>I'm making a MDI file explorer. I just my lazyness don't stick to me again and I actually finish it</p>
             </d>

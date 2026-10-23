@@ -19,6 +19,7 @@
         }
 
         button {
+            display: block;
             margin-bottom: 8px;
             width: 100px;
             height: 24px;
@@ -35,6 +36,8 @@
 
         a {
             color: #fff;
+            width: 100%;
+            display: inline;
             text-decoration: underline;
         }
 
@@ -119,8 +122,57 @@
         }
 
         #title {
-            width: auto;
-            height: 108px;
+            width: min(90%, 432px);
+            height: auto;
+        }
+
+        @media (max-width: 799px) {
+            box {
+                padding-left: 0;
+                width: 100%;
+                flex-direction: column;
+            }
+
+            box-stylized {
+                max-width: calc(100% - 18px) !important;
+            }
+
+            box-stylized[d] {
+                margin-right: 0 !important;
+            }
+
+            box-stylized[b] {
+                margin-top: 8px;
+                text-align: center;
+            }
+
+            box-stylized[z] {
+                width: 100% !important;
+                text-align: center;
+            }
+
+            box-stylized[l] {
+                margin-top: 8px;
+                margin-left: 0 !important;
+            }
+
+            button {
+                display: inline-block;
+            }
+            
+            .panel {
+                display: inline;
+            }
+
+            .panel[d] {
+                display: none;
+            }
+
+            h3,
+            .article-entry {
+                max-width: calc(100% - 16px) !important;
+                padding-left: 0;
+            }
         }
     </style>
 </head>
@@ -136,28 +188,28 @@
         <br>
         <br>
         <box>
-            <box-stylized style="width: 100%; margin-right: 8px">
+            <box-stylized style="width: 100%; margin-right: 8px" d>
                 <h3>I'm lsalwestfox (first letter not pronounced), but you can call me Zorin</h3>
                 <h3 id="asl">A/S/L: 17M/Ukraine</h3>
                 <h3>Discord: imnotbillcipher</h3>
             </box-stylized>
-            <box-stylized style="padding-top: 8px">
-                <a href="blog.html"><button>Blog</button></a><br>
-                <a href="https://github.com/Lsalwestfox"><button>My github</button></a><br>
-                <a href="very_important.html"><button>Special page</button></a><br>
+            <box-stylized style="padding-top: 8px" b>
+                <a href="blog.html"><button>Blog</button></a>
+                <a href="https://github.com/Lsalwestfox"><button>My github</button></a>
+                <a href="very_important.html"><button>Special page</button></a>
             </box-stylized>
         </box>
         <box style="margin-top: 8px">
-            <box-stylized style="width: 104px; padding-top: 8px;">
+            <box-stylized style="width: 104px; padding-top: 8px;" z>
                 <img class="panel" src="panel_1.png">
-                <img class="panel" src="panel_2.png">
+                <img class="panel" src="panel_2.png" d>
                 <img class="panel" src="panel_3.png">
                 <img class="panel" src="panel_4.png">
                 <img class="panel" src="panel_5.png">
                 <img class="panel" src="panel_6.png">
                 <img class="panel" src="panel_7.png">
             </box-stylized>
-            <box-stylized style="width: 100%; margin-left: 8px; padding-bottom: 8px">
+            <box-stylized style="width: 100%; margin-left: 8px; padding-bottom: 8px" l>
                 <h3>Links</h3>
                 <a href="https://fontlibrary.org/en/font/vegur"><h4 class="article-entry">- The only free CC-0 font i could find that is normal</h4></a>
                 <a href="https://notisrac.github.io/FileToCArray/"><h4 class='article-entry'>- Any file to .inc one</h4></a>
@@ -173,8 +225,8 @@
         <box>
             <box-stylized style="width: 100%; margin-top: 8px">
                 <h2>About myself</h2>
-                <h3>My socials skills are in the mud. I'm a C/C++ dev (and soon Jai because I'll migrate to it because it's better), it may be
-                biased, but I think I'm good dev, defenetely better than webdevs, I also play videogames, but I usually don't play to the end because
+                <h3>My socials skills are in the mud. I'm a C/C++ dev (and soon Jai because I'll migrate to it because it's better), I might be
+                biased, but IMO I'm good dev, definitely better than webdevs, I also play videogames, but I usually don't play to the end because
                 I found other game, but I beaten some games like sonic heroes, half life 2 and star fox assault, I usually use save scumming or on easiest
                 so you can just call me noob, it'll be correct. And I have horrible voice.
                 </h3>
